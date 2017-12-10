@@ -28,39 +28,30 @@ int main()
         bool garbage = false;
 
         for (auto it = std::cbegin(line); it != std::cend(line); ++it) {
-            // std::cout << *it << "\t";
             if (skip) {
-                // std::cout << "skip\n";
                 skip = false;
                 continue;
             }
             if (*it == '!') {
-                // std::cout << "mark skip\n";
                 skip = true;
                 continue;
             }
             if (garbage) {
-                // std::cout << "garbage";
                 if (*it == '>') {
-                    // std::cout << " off";
                     garbage = false;
                 }
-                // std::cout << "\n";
                 continue;
             }
             if (*it == '<') {
-                // std::cout << "mark garbage\n";
                 garbage = true;
                 continue;
             }
             if (*it == '}') {
-                // std::cout << "end group (level: " << level << ")\n";
                 sum += level--;
                 continue;
             }
             if (*it == '{') {
                 ++level;
-                // std::cout << "mark group (level: " << level << ")\n";
                 continue;
             }
         }
