@@ -178,6 +178,12 @@ sklik_compile_executable(
         puzzle_11_2.cc
     COMPILE_OPTIONS
         -Wall -std=c++14 -g -O2
-    PKG_CONFIG_DEPS
-        tbb
+)
+
+sklik_compile_executable(
+    NAME puzzle_12_1
+    SOURCES
+        puzzle_12_1.cc
+    COMPILE_OPTIONS
+        -Wall -std=c++14 -g -O2
 )
