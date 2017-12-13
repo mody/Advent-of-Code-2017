@@ -9,18 +9,25 @@
 #include <set>
 #include <vector>
 
-struct Layer {
+struct Layer
+{
     int range = 0;
-    int scanner_pos = 0;
-    int scanner_dir = 1;
+    std::vector<int> positions;
 
-    void move_scanner() {
-        if (scanner_pos == 0) {
-            scanner_dir = 1;
-        } else if (scanner_pos == range-1) {
-            scanner_dir = -1;
+    Layer(int r)
+        : range(r)
+    {
+        for (int i = 0; i < r; ++i) {
+            positions.push_back(i);
         }
-        scanner_pos += scanner_dir;
+        for (int i = range - 2; i > 0; --i) {
+            positions.push_back(i);
+        }
+    }
+
+    int scanner_pos(int tick) const
+    {
+        return positions[tick % positions.size()];
     }
 };
 
@@ -31,6 +38,7 @@ int main()
     Map map;
 
     std::string line;
+    int max_k = 0;
     while (std::getline(std::cin, line)) {
         std::vector<std::string> words;
         boost::algorithm::split(
@@ -38,22 +46,21 @@ int main()
 
         int k = std::stoi(&words[0][0]);
         int r = std::stoi(&words[1][0]);
-        map[k] = Layer{r};
+        map.insert({k, Layer{r}});
+        max_k = std::max(max_k, k);
     }
 
-    int severity = 0;
-    for (int pos = 0; pos <= map.rbegin()->first; ++pos) {
+    int hit = 0;
+    for (int pos = 0; pos <= max_k; ++pos) {
         auto it = map.find(pos);
         if (it != map.end()) {
-            if (it->second.scanner_pos == 0) {
-                severity += (pos*it->second.range);
+            if (it->second.scanner_pos(pos) == 0) {
+                hit += pos*it->second.range;
             }
-        }
-        for (auto& l : map) {
-            l.second.move_scanner();
         }
     }
 
-    std::cout << "severity: " << severity << "\n";
+    std::cout << "hit: " << hit << "\n";
+
     return 0;
 }
