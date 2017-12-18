@@ -281,5 +281,13 @@ sklik_compile_executable(
     SOURCES
         puzzle_18_1.cc
     COMPILE_OPTIONS
-        -Wall -std=c++14 -g -O0
+        -Wall -std=c++14 -g -O2
+)
+
+sklik_compile_executable(
+    NAME puzzle_18_2
+    SOURCES
+        puzzle_18_2.cc
+    COMPILE_OPTIONS
+        -Wall -std=c++14 -g -O2
 )
