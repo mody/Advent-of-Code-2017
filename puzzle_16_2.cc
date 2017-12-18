@@ -1,5 +1,3 @@
-// Copyright (C) 2017, Seznam.cz, a.s.
-
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <iostream>

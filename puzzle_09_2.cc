@@ -1,5 +1,3 @@
-// Copyright (C) 2017, Seznam.cz, a.s.
-
 #include <algorithm>
 #include <boost/functional/hash.hpp>
 #include <iostream>
