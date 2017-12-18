@@ -1,5 +1,3 @@
-// Copyright (C) 2017, Seznam.cz, a.s.
-
 #include <array>
 #include <iomanip>
 #include <iostream>
