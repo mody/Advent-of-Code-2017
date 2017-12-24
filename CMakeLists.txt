@@ -379,3 +379,11 @@ sklik_compile_executable(
     COMPILE_OPTIONS
         -Wall -std=c++14 -g -O0 -D_GLIBCXX_DEBUG
 )
+
+sklik_compile_executable(
+    NAME puzzle_24_2
+    SOURCES
+        puzzle_24_2.cc
+    COMPILE_OPTIONS
+        -Wall -std=c++14 -g -O0 -D_GLIBCXX_DEBUG
+)
